@@ -12,9 +12,19 @@ const addItemButton = document.querySelector('button.addItemButton');
 
 listUl.addEventListener('click', (event) => {
   if (event.target.tagName == 'BUTTON') { //targets any buttons in the HTML
-    let li = event.target.parentNode; //parent node of a parent node
-    let ul = li.parentNode;
-    ul.removeChild(li);
+    if (event.target.className == 'remove') {
+      let li = event.target.parentNode; //parent node of a parent node
+      let ul = li.parentNode;
+      ul.removeChild(li);
+    }
+    if (event.target.className == 'up') {
+      let li = event.target.parentNode; //parent node of a parent node
+      let prevLi = li.previousElementSibling;
+      let ul = li.parentNode;
+      if (prevLi) {
+        ul.insertBefore(li, prevLi);
+      }
+    }
   }
 });
 // listDiv.addEventListener('mouseout', (event) => {
